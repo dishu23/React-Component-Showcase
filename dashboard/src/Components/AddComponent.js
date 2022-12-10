@@ -9,7 +9,7 @@ const AddComponent = () => {
         console.log(values);
         
 
-        const res = await fetch('http://localhost:5000/user/add', {
+        const res = await fetch('http://localhost:5000/user/comp', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(values)
@@ -41,19 +41,23 @@ const AddComponent = () => {
 
                 <h3>Signup form</h3>
 
-                <Formik initialValues={{ username: '', email: '', password: '', age: '' }} onSubmit={userSubmit}>
+                <Formik initialValues={{ title: '', descriptiom: '', uploadedBy: '', image: '', code : '' }} onSubmit={userSubmit}>
                     {({ values, handleChange, handleSubmit }) => (
                         <form onSubmit={handleSubmit}>
-                            <label>Username</label>
+                            <label>Title</label>
                             <input className="form-control mb-4" name="username" onChange={handleChange} value={values.username} />
-                            <label>Email</label>
+                            <label>Description</label>
                             <input className="form-control mb-4" name="email" onChange={handleChange} value={values.email} />
 
 
-                            <label>Password</label>
+                            <label>UploadedBy</label>
                             <input type="password" className="form-control mb-4" name="password" onChange={handleChange} value={values.paasword} />
-                            <label>Age</label>
-                            <input className="form-control mb-4" name="age" onChange={handleChange} value={values.age} />
+                            
+                            <label>Code</label>
+                            <textfield className="form-control mb-4" name="code" onChange={handleChange} value={values.code} ></textfield>
+                            
+                            <label>Upload Image</label>
+                            <input className="form-control mb-4" type="file" />
 
                             <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
 

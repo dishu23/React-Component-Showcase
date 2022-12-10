@@ -5,6 +5,7 @@ import Navbar from './Components/Navbar';
 import Login from './Components/Login';
 import { Toaster } from 'react-hot-toast';
 import Register from './Components/Register';
+import AddComponent from './Components/AddComponent';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     <Routes>
     <Route element={<Login />} path="Login"/>
     <Route element={<Register />} path="register"/>
+    <Route element={<AddComponent />} path="addcomponent"/>
 
     </Routes>
     </BrowserRouter>
