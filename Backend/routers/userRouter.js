@@ -1,0 +1,77 @@
+const express = require('express');
+const router = express.Router();
+const Model = require('../models/userModel')
+
+router.get('/add', (req, res) => {
+    res.send('add reque st on userRouter')
+});
+
+router.post('/update', (req, res) => {
+    
+    console.log(req.body);
+    //storing data in datbase
+    new Model(req.body).save()
+    .then((result) => {
+        res.jsonp(result);
+        
+    }).catch((err) => {
+        res.status(500).jsonp(err);     
+    });
+});
+
+router.get('/getall', (req, res) => {
+    Model.find({})  
+    .then((result) => {
+        res.jsonp(result);
+        
+    }).catch((err) => {
+        res.status(500).jsonp(err);
+        
+    });
+})
+//colon(:)denotes parameter
+router.get('/getbyusername/:username', (req,res) => {
+    Model.find({ username : req.params.username})
+    .then((result) => {
+        res.jsonp(result);
+        
+    }).catch((err) => {
+        res.status(500).jsonp(err);
+    });
+})
+
+router.get('/getbyid/:userid',(req,res) => {
+    Model.findById(req.params.userid)
+    .then((result) => {
+        res.jsonp(result);
+        
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).jsonp(err);
+    });
+})
+
+router.delete('/delete/:userid', (req, res) => {
+    Model.findByIdAndDelete(req.params.userid)
+    .then((result) => {
+        res.json(result);
+        
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+})
+
+router.post('/authenticate', (req, res) => {
+    const formdata = req.body;
+    Model.findOne(formdata)
+    .then((result)=>{
+      if(result) res.json(result);
+      else res.status(401).json({status : 'error'});
+    }).catch((err)=>{
+      res.status(500).json(err);
+    });
+  })
+
+//for export data
+module.exports = router;
