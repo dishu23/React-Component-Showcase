@@ -2,11 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Model = require('../models/componentModel')
 
-router.get('/add', (req, res) => {
-    res.send('add reque st on userRouter')
-});
-
-router.post('/update', (req, res) => {
+router.post('/add', (req, res) => {
     
     console.log(req.body);
     //storing data in datbase
