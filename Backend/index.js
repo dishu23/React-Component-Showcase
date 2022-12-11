@@ -19,7 +19,7 @@ app.use('/user', useRouter)
 app.use('/comp', compRouter)
 app.use('/util', utilRouter)
 
-
+app.use(express.static('./static/uploads'));
 
 //define port
 const port = 5000;

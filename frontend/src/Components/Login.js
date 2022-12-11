@@ -1,6 +1,6 @@
 import React from 'react'
 import { Formik } from 'formik';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 
@@ -27,7 +27,7 @@ const Login = () => {
       })
       const data = await res.json();
       sessionStorage.setItem('user', JSON.stringify(data))
-      navigate('/editor');
+      navigate('/AddComponent');
       // resetForm();
     } else if (res.status === 401) {
       Swal.fire({
@@ -88,7 +88,7 @@ const Login = () => {
 
 
                                 <div class="text-center">
-                                    <p>Not a member? <a href="#!">Register</a></p>
+                                    <p>Not a member? <Link to="/register">Register</Link></p>
                                     <p>or sign up with:</p>
                                     <button type="button" class="btn btn-secondary btn-floating mx-1">
                                         <i class="fab fa-facebook-f"></i>
