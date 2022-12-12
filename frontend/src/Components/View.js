@@ -27,8 +27,12 @@ const View = () => {
       <div className="col-md-4 bg-light">
         <div className="card">
           <div className="card-body">
+          <i className="fa-solid fa-circle-xmark float-end fa-2x" onClick={e => {
+            setSelComp(null);
+
+          }}></i>
             {/* <div className="p-3" style={{ border: "2px solid grey" }}></div> */}
-            <JsxParser jsx={selComp.code} />
+            <JsxParser jsx={`${selComp.code}`} />
             <h4 class="mb-0">{selComp.title}</h4>
             <p class="text-dark mt-2 text-muted">{selComp.uploadedBy}</p>
             <p class="text-dark mt-3">{selComp.description}</p>
@@ -75,15 +79,15 @@ const View = () => {
       {/* For Product Cards */}
       <div>
         <section style={{ backgroundcolor: "#eee" }}>
-          <div class="col-md-10 mx-auto py-5">
-            <div className="row">
-              <div className="col-md">
+          <div className="row">
+            <div className="col-md">
+              <div class="col-md-10 mx-auto py-5">
                 <div class="row">{displayComponents()}</div>
               </div>
-              {
-                selComp && viewPanel()
-              }
             </div>
+            {
+              selComp && viewPanel()
+            }
           </div>
         </section>
       </div>
